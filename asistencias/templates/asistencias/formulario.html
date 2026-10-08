@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Asistencia</title>
+    {% include 'asistencias/estilos.html' %}
 </head>
 
 <body>
@@ -69,7 +70,7 @@
         <input
             type="date"
             name="fecha"
-            value="{{ asistencia.fecha|default:'' }}"
+            value="{{ asistencia.fecha|date:'Y-m-d' }}"
             required
         >
     </p>
@@ -79,8 +80,7 @@
         <input
             type="checkbox"
             name="asistio"
-            value="{{ asistencia.asistio|default:'' }}"
-            required
+            {% if asistencia.asistio %}checked{% endif %}
         >
     </p>
 

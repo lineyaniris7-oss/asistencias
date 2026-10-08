@@ -44,7 +44,7 @@ def editar(request, id):
 
     if request.method == "POST":
 
-        asistencia.nombre = request.POST["nombres"]
+        asistencia.nombres = request.POST["nombres"]
         asistencia.apellidos = request.POST["apellidos"]
         asistencia.tipo_documento = request.POST["tipo_documento"]
         asistencia.documento = request.POST["documento"]
