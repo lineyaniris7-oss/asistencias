@@ -3,46 +3,39 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Asistencias</title>
     {% include 'asistencias/estilos.html' %}
 </head>
 
 <body>
 
+<header class="barra">
+    <p>Hola, <strong>{{ user.username }}</strong></p>
+    <a href="/usuarios/logout/">Cerrar sesión</a>
+</header>
+
 <h1>Lista de asistencias</h1>
 
-<a href="/asistencias/">
-    Nueva asistencia
-</a>
-
-<hr>
+<a class="boton-nuevo" href="/asistencias/">Nueva asistencia</a>
 
 {% for asistencia in asistencias %}
 
-    <h3>{{ asistencia.nombres }}</h3>
-    
+    <article class="item">
 
-    <a href="/asistencias/detalle/{{ asistencia.id }}/">
-        Ver
-    </a>
+        <h3>{{ asistencia.nombres }}</h3>
 
-    |
+        <div class="acciones">
+            <a href="/asistencias/detalle/{{ asistencia.id }}/">Ver</a>
+            <a href="/asistencias/editar/{{ asistencia.id }}/">Editar</a>
+            <a href="/asistencias/eliminar/{{ asistencia.id }}/">Eliminar</a>
+        </div>
 
-    <a href="/asistencias/editar/{{ asistencia.id }}/">
-        Editar
-    </a>
-
-    |
-
-    <a href="/asistencias/eliminar/{{ asistencia.id }}/">
-        Eliminar
-    </a>
-
-    <hr>
+    </article>
 
 {% empty %}
 
-    <p>No hay asistencias.</p>
+    <p class="vacio">No hay asistencias.</p>
 
 {% endfor %}
 

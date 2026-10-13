@@ -1,0 +1,54 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="stylesheet" href="{% static 'estilosu.css' %}">
+</head>
+
+<body>
+
+<h1>Crear cuenta</h1>
+
+{% if error %}
+    <p class="error">{{ error }}</p>
+{% endif %}
+
+<form method="POST">
+
+    {% csrf_token %}
+
+    <p>
+        <label>Usuario:</label><br>
+        <input type="text" name="username" required>
+    </p>
+
+    <p>
+        <label>Correo:</label><br>
+        <input type="email" name="email" required>
+    </p>
+
+    <p>
+        <label>Contraseña:</label><br>
+        <input type="password" name="password1" required>
+    </p>
+
+    <p>
+        <label>Repetir contraseña:</label><br>
+        <input type="password" name="password2" required>
+    </p>
+
+    <button type="submit">Registrarme</button>
+
+</form>
+
+<p>
+    <a href="/usuarios/login/">¿Ya tienes cuenta? Inicia sesión</a>
+</p>
+
+</body>
+
+</html>

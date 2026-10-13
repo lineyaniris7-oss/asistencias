@@ -1,11 +1,13 @@
 from django.shortcuts import render
-
+from django.contrib.auth.decorators import login_required
 from .models import Asistencia
 
+@login_required
 def crear(request):
     
     if request.method == "POST":
         asistencia = Asistencia(
+            usuario=request.user,
             nombres=request.POST["nombres"],
             apellidos=request.POST["apellidos"],
             tipo_documento=request.POST["tipo_documento"],
@@ -18,9 +20,10 @@ def crear(request):
         asistencia.save()
     return render(request, "asistencias/formulario.html")
 
+@login_required
 def listar(request):
 
-    asistencias = Asistencia.objects.all()
+    asistencias = Asistencia.objects.filter(usuario=request.user)
 
     return render(
         request,
@@ -28,6 +31,7 @@ def listar(request):
         {"asistencias": asistencias}
     )
 
+@login_required
 def detalle(request, id):
 
     asistencia = Asistencia.objects.get(id=id)
@@ -38,6 +42,7 @@ def detalle(request, id):
         {"asistencia": asistencia}
     )
 
+@login_required
 def editar(request, id):
 
     asistencia = Asistencia.objects.get(id=id)
@@ -66,6 +71,7 @@ def editar(request, id):
         {"asistencia": asistencia}
     )
 
+@login_required
 def eliminar(request, id):
 
     asistencia = Asistencia.objects.get(id=id)
@@ -75,5 +81,5 @@ def eliminar(request, id):
     return render(
         request,
         "asistencias/lista.html",
-        {"asistencias": Asistencia.objects.all()}
+        {"asistencias": Asistencia.objects.filter(usuario=request.user)}
     )

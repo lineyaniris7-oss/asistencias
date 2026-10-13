@@ -25,7 +25,6 @@ hr {
     border-top: 1px solid #ddd;
 }
 
-/* Formulario */
 label {
     display: block;
     margin-bottom: 4px;
@@ -51,25 +50,56 @@ input[type="checkbox"] {
     height: 18px;
 }
 
-button {
+button,
+.boton-nuevo {
+    display: inline-block;
     padding: 10px 20px;
     border: none;
     border-radius: 6px;
     background-color: #39a900;
     color: #fff;
     font-size: 15px;
+    text-decoration: none;
     cursor: pointer;
 }
 
-button:hover {
+button:hover,
+.boton-nuevo:hover {
     background-color: #2f8c00;
 }
 
-/* Enlaces */
 a {
     color: #2b5d34;
 }
 
 a[href*="eliminar"] {
     color: #c62828;
+}
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.barra p {
+    margin: 0;
+}
+
+.item {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 4px 14px 12px;
+    margin-top: 12px;
+}
+
+.acciones {
+    display: flex;
+    gap: 15px;
+}
+
+.vacio {
+    text-align: center;
+    color: #777;
 }

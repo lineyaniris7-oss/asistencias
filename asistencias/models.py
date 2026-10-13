@@ -1,6 +1,8 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Asistencia(models.Model):
+    usuario = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
     nombres = models.CharField(max_length = 100)
     apellidos = models.CharField(max_length = 100)
     tipo_documento = models.CharField(max_length = 30)
